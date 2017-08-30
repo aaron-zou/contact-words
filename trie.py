@@ -44,8 +44,16 @@ class Trie(object):
         if not self.is_present(word):
             raise ValueError("Internal error: {} not found".format(word))
 
-        # Want to minimize information gained from knowing an additional letter
-        return 0
+        # Intuitively, difficulty could be thought of as the number of wrong
+        # possible guesses given a known prefix, or num_descendants - 1
+        score = 0
+        current = self.root
+        for level in range(len(word.rstrip()) - 1):
+            score += current.num_descendants - 1
+            index = self._index(word[level])
+            current = current.children[index]
+
+        return score
 
 
 class TrieNode(object):
