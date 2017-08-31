@@ -33,8 +33,7 @@ def main():
         subset = [PUNCTATION_REGEX.sub('', word)
                   for word in words if word.startswith(char)]
         trie = Trie(subset)
-        write_output(char, sorted(subset, key=lambda word: trie.score(word),
-                                  reverse=True))
+        write_output(char, sorted(subset, key=lambda word: trie.score(word)))
 
 
 if __name__ == '__main__':
