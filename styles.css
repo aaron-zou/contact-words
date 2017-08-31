@@ -1,0 +1,17 @@
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+  background-color: #F9F9F9;
+}
+
+.row {
+  margin: 5px 0px;
+}
+
+.flexin {
+  display: flex;
+}
+
+.flexin .btn {
+  flex: 1;
+}
