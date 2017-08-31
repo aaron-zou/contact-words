@@ -14,8 +14,8 @@ function randomLetter() {
 }
 
 /**
- * Represents a book.
- * @param {string} author - The author of the book.
+ * Sample a word of a given difficulty from a pre-generated sorted list.
+ * @param {int} difficulty - value in {0, 1, 2} indicating which third to search
  */
 function generateWord(difficulty) {
   const letter = document.getElementById('starting-letter').value;
@@ -35,6 +35,11 @@ function generateWord(difficulty) {
   req.send();
 }
 
+/**
+ * Helper function to perform the sampling and modify the output HTML element.
+ * @param {string[]} lines - retrieved list of words
+ * @param {int} difficulty - value in {0, 1, 2} indicating which third to search
+ */
 function sampleWordAndSet(lines, difficulty) {
   const min = Math.floor(difficulty * lines.length / 3.0);
   const range = Math.floor(lines.length / 3.0);
@@ -43,21 +48,21 @@ function sampleWordAndSet(lines, difficulty) {
 }
 
 /**
- * Represents a book.
+ * Delegate to generateWord(), choosing from the third easiest words for Contact.
  */
 function generateEasyWord() {
   generateWord(difficulties.EASY);
 }
 
 /**
- * Represents a book.
+ * Delegate to generateWord(), choosing from the middle third of words for Contact.
  */
 function generateMediumWord() {
   generateWord(difficulties.MEDIUM);
 }
 
 /**
- * Represents a book.
+ * Delegate to generateWord(), choosing from the last third of words for Contact.
  */
 function generateHardWord() {
   generateWord(difficulties.HARD);
